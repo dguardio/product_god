@@ -1,0 +1,34 @@
+{
+    "feature": "RAG & Semantic Search",
+    "id": "PRD-004",
+    "status": "draft",
+    "priority": "Critical",
+    "user_stories": [
+        {
+            "id": "US-007",
+            "title": "Hybrid Search Interface",
+            "as_a": "User",
+            "i_want_to": "search the podcast database using natural language",
+            "so_that": "I can find relevant advice without needing exact keywords.",
+            "acceptance_criteria": [
+                "User input is vectorized.",
+                "System performs similarity search on `TranscriptChunks`.",
+                "System *also* performs keyword search (Postgres full-text search) for specific terms.",
+                "Results are re-ranked or combined."
+            ]
+        },
+        {
+            "id": "US-008",
+            "title": "Contextual Answer Generation",
+            "as_a": "User",
+            "i_want_to": "receive a synthesized answer to my question",
+            "so_that": "I don't have to read raw transcripts to understand the concept.",
+            "acceptance_criteria": [
+                "Retrieve top k relevant chunks.",
+                "Retrieve related graph entities (e.g., if asking about 'Growth', pull in related 'Growth Experts').",
+                "Send context + user question to LLM to generate a natural language response.",
+                "Cite sources (Episode Title + Time/Chunk)."
+            ]
+        }
+    ]
+}

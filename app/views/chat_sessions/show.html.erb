@@ -1,0 +1,72 @@
+<div class="flex h-[calc(100vh-64px)]">
+  <!-- Sidebar (History) -->
+  <div class="w-80 bg-gray-50 border-r border-gray-200 overflow-y-auto hidden md:block">
+    <div class="p-4">
+      <%= button_to "New Chat", chat_sessions_path, method: :post, class: "w-full flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none" %>
+    </div>
+    <ul class="divide-y divide-gray-200">
+      <% current_user.chat_sessions.order(updated_at: :desc).each do |session| %>
+        <li>
+          <%= link_to chat_session_path(session), class: "block hover:bg-gray-100 px-4 py-4 #{'bg-indigo-50' if session == @chat_session}" do %>
+            <div class="flex justify-between">
+              <p class="text-sm font-medium text-gray-900 truncate"><%= session.title %></p>
+              <p class="text-xs text-gray-500"><%= session.updated_at.strftime("%b %d") %></p>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <!-- Main Chat Area -->
+  <div class="flex-1 flex flex-col bg-white">
+    <!-- Messages -->
+    <div class="flex-1 p-6 overflow-y-auto space-y-6" id="messages-container">
+      <% if @messages.empty? %>
+        <div class="text-center text-gray-400 mt-20">
+          <p class="text-xl">Start a conversation with the Product God.</p>
+        </div>
+      <% else %>
+        <% @messages.each do |message| %>
+          <div class="flex <%= message.user? ? 'justify-end' : 'justify-start' %>">
+            <div class="max-w-2xl <%= message.user? ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-900' %> rounded-2xl px-6 py-4 shadow-sm">
+              <div class="prose <%= message.user? ? 'prose-invert' : '' %> max-w-none">
+                <!-- We should render markdown here realistically, but simple text for MVP -->
+                <%= simple_format(message.content) %>
+              </div>
+              
+              <% if message.assistant? && message.sources.present? %>
+                <div class="mt-4 pt-4 border-t <%= message.user? ? 'border-indigo-500' : 'border-gray-200' %>">
+                  <p class="text-xs font-semibold mb-2">Sources:</p>
+                  <ul class="text-xs space-y-1 opacity-75">
+                    <% message.sources.first(3).each do |source| %>
+                       <li>• <%= source['content'] %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- Input Area -->
+    <div class="p-4 border-t border-gray-200 bg-white">
+      <%= form_with url: chat_session_path(@chat_session), method: :patch, class: "relative" do |form| %>
+        <%= form.text_area :content, rows: 2, class: "block w-full rounded-2xl border-gray-300 pr-12 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm resize-none", placeholder: "Ask a question..." %>
+        <button type="submit" class="absolute right-3 bottom-3 p-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Scroll to bottom on load
+  const container = document.getElementById('messages-container');
+  container.scrollTop = container.scrollHeight;
+</script>

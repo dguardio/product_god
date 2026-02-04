@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  board_meeting: one
+  sender_type: MyString
+  sender_graph_node_id: 
+  content: MyText
+  sequence: 1
+
+two:
+  board_meeting: two
+  sender_type: MyString
+  sender_graph_node_id: 
+  content: MyText
+  sequence: 1

@@ -1,0 +1,21 @@
+{
+    "feature": "Knowledge Visualization",
+    "id": "PRD-005",
+    "status": "draft",
+    "priority": "Medium",
+    "user_stories": [
+        {
+            "id": "US-009",
+            "title": "Interactive Graph Explorer",
+            "as_a": "User",
+            "i_want_to": "visually navigate the connections between guests and topics",
+            "so_that": "I can discover new content serendipitously.",
+            "acceptance_criteria": [
+                "Web interface displays nodes (People, Topics) and edges.",
+                "Users can click a node to see details or related episodes.",
+                "Users can filter the graph (e.g., 'Show only Product Managers')."
+            ],
+            "technical_notes": "Use a JS library like `cytoscape.js` or `d3-force`."
+        }
+    ]
+}

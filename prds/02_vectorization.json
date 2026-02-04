@@ -1,0 +1,34 @@
+{
+    "feature": "Vectorization & Indexing",
+    "id": "PRD-002",
+    "status": "draft",
+    "priority": "Critical",
+    "user_stories": [
+        {
+            "id": "US-003",
+            "title": "Generate Embeddings",
+            "as_a": "System",
+            "i_want_to": "generate vector embeddings for each transcript chunk",
+            "so_that": "I can perform semantic similarity searches.",
+            "acceptance_criteria": [
+                "Integrate with an Embedding Model Provider (OpenAI `text-embedding-3-small` or local equivalent).",
+                "Generate a float array (vector) for each `TranscriptChunk`.",
+                "Handle API rate limits and failures gracefully."
+            ],
+            "technical_notes": "Use `ruby_llm` gem. Store API keys securely."
+        },
+        {
+            "id": "US-004",
+            "title": "Store Vectors in PCVector",
+            "as_a": "System",
+            "i_want_to": "store embeddings in PostgreSQL using pgvector",
+            "so_that": "I can run fast similarity queries directly in the database.",
+            "acceptance_criteria": [
+                "Enable `pgvector` extension in Postgres.",
+                "Add a `vector` column to `TranscriptChunks` table.",
+                "Add an HNSW index for fast approximate nearest neighbor search."
+            ],
+            "technical_notes": "Use `neighbour` gem for ActiveRecord integration with pgvector."
+        }
+    ]
+}

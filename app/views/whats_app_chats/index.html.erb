@@ -1,0 +1,46 @@
+<div class="space-y-6">
+  <div class="flex justify-between items-center">
+    <h1 class="text-3xl font-bold text-gray-900">WhatsApp Chats</h1>
+    <%= link_to "Upload New Chat", new_whats_app_chat_path, class: "bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition" %>
+  </div>
+
+  <div class="bg-white shadow overflow-hidden sm:rounded-md">
+    <ul role="list" class="divide-y divide-gray-200">
+      <% @chats.each do |chat| %>
+        <li>
+          <%= link_to chat, class: "block hover:bg-gray-50" do %>
+            <div class="px-4 py-4 sm:px-6">
+              <div class="flex items-center justify-between">
+                <p class="text-sm font-medium text-indigo-600 truncate"><%= chat.title %></p>
+                <div class="ml-2 flex-shrink-0 flex">
+                  <% if chat.processed? %>
+                    <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      Processed
+                    </p>
+                  <% else %>
+                    <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                      Processing
+                    </p>
+                  <% end %>
+                </div>
+              </div>
+              <div class="mt-2 sm:flex sm:justify-between">
+                <div class="sm:flex">
+                  <p class="flex items-center text-sm text-gray-500">
+                    Uploaded <%= time_ago_in_words(chat.created_at) %> ago
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+      
+      <% if @chats.empty? %>
+        <li class="px-4 py-8 text-center text-gray-500">
+          No chats uploaded yet.
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  guest: MyString
+  title: MyString
+  video_id: MyString
+  publish_date: 2026-01-21
+  description: MyText
+  duration_seconds: 1
+  view_count: 1
+  channel: MyString
+  youtube_url: MyString
+
+two:
+  guest: MyString
+  title: MyString
+  video_id: MyString
+  publish_date: 2026-01-21
+  description: MyText
+  duration_seconds: 1
+  view_count: 1
+  channel: MyString
+  youtube_url: MyString

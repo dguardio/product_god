@@ -1,0 +1,32 @@
+{
+    "feature": "Knowledge Graph Construction",
+    "id": "PRD-003",
+    "status": "draft",
+    "priority": "High",
+    "user_stories": [
+        {
+            "id": "US-005",
+            "title": "Entity Extraction",
+            "as_a": "System",
+            "i_want_to": "extract key entities from transcripts",
+            "so_that": "I can identify who and what is being discussed beyond simple text matching.",
+            "acceptance_criteria": [
+                "Use an LLM to scan chunks and identify entities: Guests, Comparies, Frameworks, Books, Tools.",
+                "Normalize entity names (e.g., 'Airbnb' vs 'AirBnB').",
+                "Store unique entities in a `GraphNodes` table."
+            ]
+        },
+        {
+            "id": "US-006",
+            "title": "Relationship Mapping",
+            "as_a": "System",
+            "i_want_to": "identify relationships between entities",
+            "so_that": "I can build a connected graph of knowledge.",
+            "acceptance_criteria": [
+                "Extract relationships like 'WORKS_AT', 'FOUNDED', 'RECOMMENDS', 'MENTIONS'.",
+                "Store edges in a `GraphEdges` table (source_node_id, target_node_id, relationship_type, metadata).",
+                "Link entities back to the specific `TranscriptChunk` where the relationship was found."
+            ]
+        }
+    ]
+}

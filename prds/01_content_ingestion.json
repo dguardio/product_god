@@ -1,0 +1,34 @@
+{
+  "feature": "Content Ingestion",
+  "id": "PRD-001",
+  "status": "draft",
+  "priority": "Critical",
+  "user_stories": [
+    {
+      "id": "US-001",
+      "title": "Ingest Podcast Transcripts",
+      "as_a": "System Administrator",
+      "i_want_to": "automatically clone and parse the 'lennys-podcast-transcripts' repository",
+      "so_that": "I have a local database of all episodes and transcripts for processing.",
+      "acceptance_criteria": [
+        "System clones https://github.com/ChatPRD/lennys-podcast-transcripts.",
+        "System iterates through all `episodes/{guest}/transcript.md` files.",
+        "System parses YAML frontmatter (guest, title, date, youtube_url, etc.) into an `Episodes` table.",
+        "System extracts the markdown body of the transcript."
+      ],
+      "technical_notes": "Use a rake task or background job (Sidekiq/GoodJob) to handle the git clone and parsing. Use a library like `front_matter_parser` for the markdown files."
+    },
+    {
+      "id": "US-002",
+      "title": "Text Chunking Strategy",
+      "as_a": "Developer",
+      "i_want_to": "split transcripts into semantic chunks",
+      "so_that": "vector embeddings are accurate and context is preserved.",
+      "acceptance_criteria": [
+        "Implement a chunking strategy (e.g., recursive character split, token-based, or paragraph-based).",
+        "Target chunk size ~500-1000 tokens with overlap.",
+        "Store chunks in a `TranscriptChunks` table with a foreign key to `Episodes`."
+      ]
+    }
+  ]
+}

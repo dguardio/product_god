@@ -1,0 +1,20 @@
+{
+    "feature": "Trend & Sentiment Analytics",
+    "id": "PRD-009",
+    "status": "draft",
+    "priority": "Low",
+    "user_stories": [
+        {
+            "id": "US-014",
+            "title": "Topic Trend Visualization",
+            "as_a": "Analyst",
+            "i_want_to": "see how the frequency of a topic has changed over time",
+            "so_that": "I can spot rising trends or fading buzzwords.",
+            "acceptance_criteria": [
+                "Aggregate mentions of key terms/entities by episode publish date.",
+                "Render Line/Area charts showing frequency over time.",
+                "Allow comparison of multiple terms (e.g., 'Remote Work' vs 'Hybrid')."
+            ]
+        }
+    ]
+}

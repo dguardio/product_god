@@ -1,0 +1,21 @@
+{
+    "feature": "Personalized Curriculum",
+    "id": "PRD-010",
+    "status": "draft",
+    "priority": "Medium",
+    "user_stories": [
+        {
+            "id": "US-015",
+            "title": "Generate Learning Path",
+            "as_a": "User",
+            "i_want_to": "get a curated list of episodes based on my role and goals",
+            "so_that": "I can have a structured learning experience.",
+            "acceptance_criteria": [
+                "User inputs Role (e.g., PM, Founder) and Goal (e.g., 'Scaling to 10M users').",
+                "System queries the Knowledge Graph for 'Best Practices' and 'Experts' related to the goal.",
+                "System creates an ordered playlist of episodes, prioritizing maximum information gain.",
+                "UI displays progress tracking through the curriculum."
+            ]
+        }
+    ]
+}

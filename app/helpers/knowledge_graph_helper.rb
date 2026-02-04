@@ -1,0 +1,2 @@
+module KnowledgeGraphHelper
+end

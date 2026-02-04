@@ -1,0 +1,15 @@
+<div class="flex <%= message.sender_type == 'User' ? 'justify-end' : 'justify-start' %> mb-4 animate-fade-in-up">
+  <div class="max-w-[80%] rounded-2xl px-5 py-3 shadow-sm 
+              <%= message.sender_type == 'User' ? 'bg-blue-600 text-white rounded-br-none' : 'bg-white text-gray-800 border border-gray-100 rounded-bl-none' %>">
+    
+    <% if message.sender_type == 'AI' %>
+      <div class="text-xs font-bold text-gray-500 mb-1 uppercase tracking-wider flex items-center gap-1">
+        <%= message.sender_node&.name || "AI" %>
+      </div>
+    <% end %>
+
+    <div class="prose prose-sm <%= message.sender_type == 'User' ? 'prose-invert' : 'prose-slate' %> max-w-none">
+      <%= simple_format(message.content) %>
+    </div>
+  </div>
+</div>

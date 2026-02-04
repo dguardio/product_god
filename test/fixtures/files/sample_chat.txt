@@ -1,0 +1,6 @@
+[01/05/24, 10:15:30 AM] Alice: Hey everyone, welcome to the Product God team chat!
+[01/05/24, 10:16:00 AM] Bob: Thanks Alice! Excited to be here.
+[01/05/24, 10:17:15 AM] Alice: We're going to build an amazing knowledge graph.
+[01/05/24, 10:18:20 AM] Charlie: Sounds great. I'll start working on the ingestion pipeline.
+[01/05/24, 10:18:45 AM] Alice: Perfect. Make sure it handles polymorphic associations.
+[01/05/24, 10:19:00 AM] Bob: I'll handle the frontend.

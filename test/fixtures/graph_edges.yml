@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  source_node: one
+  target_node: one
+  relationship_type: MyString
+  transcript_chunk: one
+  properties: 
+
+two:
+  source_node: two
+  target_node: two
+  relationship_type: MyString
+  transcript_chunk: two
+  properties: 

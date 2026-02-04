@@ -1,0 +1,32 @@
+<%= turbo_frame_tag "node_results" do %>
+  <% if @nodes.empty? %>
+    <div class="flex flex-col items-center justify-center h-48 text-gray-400">
+      <svg class="h-10 w-10 mb-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
+      </svg>
+      <p class="text-sm">No results found.</p>
+    </div>
+  <% else %>
+    <div class="space-y-2">
+      <% @nodes.each do |node| %>
+        <div class="p-3 bg-white rounded-lg border border-gray-200 hover:border-blue-400 hover:shadow-sm cursor-pointer transition-all flex items-center justify-between group"
+             data-action="click->graph#loadNode"
+             data-id="<%= node.id %>"
+             data-label="<%= node.name %>"
+             data-type="<%= node.label %>"
+             data-description="<%= node.description %>">
+          
+          <div class="min-w-0">
+            <h4 class="font-medium text-gray-800 text-sm truncate group-hover:text-blue-600 transition-colors"><%= node.name %></h4>
+            <span class="inline-block mt-1 text-[10px] uppercase font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded tracking-wide">
+              <%= node.label %>
+            </span>
+          </div>
+          <svg class="h-4 w-4 text-gray-300 group-hover:text-blue-400 transform group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

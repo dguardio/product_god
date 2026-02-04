@@ -1,0 +1,4 @@
+<%= form_with url: board_meeting_messages_path(@meeting), method: :post, id: "new_message", data: { turbo_frame: "_top" }, class: "flex gap-2" do |f| %>
+  <%= f.text_field :content, placeholder: "Add your perspective or ask a followup...", class: "flex-1 rounded-full border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-4 py-2" %>
+  <%= f.submit "Send", class: "bg-blue-600 text-white rounded-full px-6 py-2 font-medium hover:bg-blue-700 transition" %>
+<% end %>

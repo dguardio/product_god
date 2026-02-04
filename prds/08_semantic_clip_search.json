@@ -1,0 +1,21 @@
+{
+    "feature": "Semantic Clip Search",
+    "id": "PRD-008",
+    "status": "draft",
+    "priority": "Medium",
+    "user_stories": [
+        {
+            "id": "US-013",
+            "title": "Deep Link to Video",
+            "as_a": "User",
+            "i_want_to": "click a search result and jump to that exact moment in the YouTube video",
+            "so_that": "I can watch the context and delivery, not just read text.",
+            "acceptance_criteria": [
+                "Estimate timestamp for each transcript chunk (based on word count vs duration ratio, or actual timestamps if available).",
+                "Generate YouTube 't=' parameter links.",
+                "Embed YouTube player in the results page jumping to the start of the relevant segment."
+            ],
+            "technical_notes": "Accuracy depends on transcript quality. Fallback to start of episode if estimation is too risky."
+        }
+    ]
+}

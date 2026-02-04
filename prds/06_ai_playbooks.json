@@ -1,0 +1,32 @@
+{
+    "feature": "AI Playbooks",
+    "id": "PRD-006",
+    "status": "draft",
+    "priority": "High",
+    "user_stories": [
+        {
+            "id": "US-010",
+            "title": "Generate Actionable Playbooks",
+            "as_a": "User",
+            "i_want_to": "generate a step-by-step guide for a specific challenge",
+            "so_that": "I can apply the best advice from multiple episodes without manual synthesis.",
+            "acceptance_criteria": [
+                "User inputs a goal (e.g., 'How to launch a B2B product').",
+                "System identifies relevant 'How-to' content across multiple episodes.",
+                "System synthesizes a structured markdown document (The Playbook) with steps, checklists, and common pitfalls.",
+                "Each step cites the source episode and expert."
+            ]
+        },
+        {
+            "id": "US-011",
+            "title": "Export Playbook",
+            "as_a": "User",
+            "i_want_to": "download or save the generated playbook",
+            "so_that": "I can share it with my team or refer to it later.",
+            "acceptance_criteria": [
+                "Allow export to PDF or Markdown.",
+                "Save playbook to user profile."
+            ]
+        }
+    ]
+}

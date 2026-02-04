@@ -1,0 +1,2 @@
+module BoardMeetings::MessagesHelper
+end

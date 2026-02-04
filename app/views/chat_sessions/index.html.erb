@@ -1,0 +1,26 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+  <h1 class="text-4xl font-extrabold text-gray-900 mb-8">Your Chats</h1>
+  
+  <% if @chat_sessions.any? %>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <% @chat_sessions.each do |session| %>
+        <%= link_to chat_session_path(session), class: "block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-50" do %>
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900"><%= session.title %></h5>
+          <p class="font-normal text-gray-700"><%= session.updated_at.strftime("%B %d, %Y") %></p>
+        <% end %>
+      <% end %>
+    </div>
+    
+    <div class="mt-12">
+      <%= button_to "Start New Chat", chat_sessions_path, method: :post, class: "inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700" %>
+    </div>
+  <% else %>
+    <div class="bg-indigo-50 rounded-lg p-12">
+      <h3 class="text-lg font-medium text-gray-900">No chats yet</h3>
+      <p class="mt-2 text-gray-500">Start a conversation with the knowledge base.</p>
+      <div class="mt-6">
+        <%= button_to "New Chat", chat_sessions_path, method: :post, class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none" %>
+      </div>
+    </div>
+  <% end %>
+</div>

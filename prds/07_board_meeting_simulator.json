@@ -1,0 +1,21 @@
+{
+    "feature": "Board Meeting Simulator",
+    "id": "PRD-007",
+    "status": "draft",
+    "priority": "Low",
+    "user_stories": [
+        {
+            "id": "US-012",
+            "title": "Simulate Expert Debate",
+            "as_a": "User",
+            "i_want_to": "simulate a discussion between specific guests on a topic",
+            "so_that": "I can see diverse perspectives and how different experts might disagree.",
+            "acceptance_criteria": [
+                "User selects 2-3 specific guests (e.g., 'Lenny', 'Marty Cagan', 'Shreyas').",
+                "User provides a topic or problem statement.",
+                "System retrieves relevant viewpoints/quotes for each selected guest.",
+                "LLM generates a script/dialogue where each persona argues their viewpoint based on their transcript data."
+            ]
+        }
+    ]
+}

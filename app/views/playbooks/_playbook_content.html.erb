@@ -1,0 +1,40 @@
+<div class="lg:w-3/4">
+  <article class="prose prose-lg prose-indigo max-w-none bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+    <%= Commonmarker.to_html(playbook.content, options: {
+        render: { unsafe: true },
+        extension: { tasklist: true, table: true, autolink: true, strikethrough: true }
+    }).html_safe %>
+  </article>
+</div>
+
+<!-- Sidebar -->
+<div class="lg:w-1/4 space-y-6">
+  <div class="bg-slate-50 p-6 rounded-xl border border-gray-200 sticky top-24">
+    <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Sources Used</h3>
+    
+    <% if playbook.sources.present? %>
+      <ul class="space-y-4">
+        <% playbook.sources.each do |source| %>
+          <%# Handle mostly hash data from jsonb %>
+          <% source = source.symbolize_keys rescue source %> 
+          <li class="text-sm">
+            <div class="font-medium text-gray-900"><%= source[:guest] %></div>
+            <div class="text-gray-500 leading-snug text-xs mt-0.5"><%= source[:title] %></div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="flex items-center text-gray-500 italic text-sm">
+        <% if playbook.created_at > 1.minute.ago && playbook.sources.blank? %>
+          <svg class="animate-spin -ml-1 mr-3 h-4 w-4 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Analyzing podcasts...
+        <% else %>
+          No sources cited.
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

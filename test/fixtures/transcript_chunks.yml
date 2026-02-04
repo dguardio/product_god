@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  episode: one
+  content: MyText
+  start_timestamp: 1.5
+  end_timestamp: 1.5
+  embedding: 
+
+two:
+  episode: two
+  content: MyText
+  start_timestamp: 1.5
+  end_timestamp: 1.5
+  embedding: 
